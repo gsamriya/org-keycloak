@@ -1,0 +1,32 @@
+# This environment is closer to a production one than 'dev'
+# Carefully inspect this file and read the Keycloak
+# docs before using something like this in production
+
+POSTGRES_DB=keycloak
+POSTGRES_USER=kc_dbuser
+# POSTGRES_PASSWORD=something_secure
+
+KC_DB_USERNAME=kc_dbuser
+# KC_DB_PASSWORD=something_secure
+
+# Hardcode it - don't trust client headers
+KC_HOSTNAME=https://auth.mydomain.com
+
+# Admin client should not be public
+KC_HOSTNAME_ADMIN=http://localhost:8080
+
+# HTTPS will be handled by the reverse proxy, only
+# do this if running with one
+KC_HTTP_ENABLED=false
+
+# Tell KC that the reverse proxy will forward headers
+KC_PROXY_HEADERS=xforwarded
+
+# Allow Backchannel use for local apps
+KC_HOSTNAME_BACKCHANNEL_DYNAMIC=true
+
+# Should be secure - but delete this bootstrap user and set
+# one up with MFA etc before making anything public
+# KC_BOOTSTRAP_ADMIN_USERNAME=something_secure
+# KC_BOOTSTRAP_ADMIN_PASSWORD=something_secure
+
